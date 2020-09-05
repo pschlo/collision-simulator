@@ -1,0 +1,66 @@
+
+_Allgemein
+
+Das Programm "Kollisions-Simulator 2000" bietet die Möglichkeit, die Bewegungsabläufe von mehreren kollidierenden Körpern zu analysieren. Es können unter anderem die Kollisionen, die Zeitdauern, die Geschwindigkeiten und die Positionen der Körper untersucht werden. Nach Belieben werden diese Daten auch mit einem anschaulichen Graphen dargestellt.
+
+
+
+_Umgebung
+
+Die Körper befinden sich auf einer Geraden, die gleichzeitig auch als X-Achse verstanden werden kann. Bei der Position x=0 auf der linken Seite der Umgebung steht eine massive Wand mit unendlich großer Masse, sodass die Körper vollständig an ihr abprallen.
+
+Körper werden von Kollisions-Simulator 2000 als Punktmassen verstanden. Um die einzelnen Körper voneinander unterscheiden zu können, wird um jeden Massepunkt herum ein farbiger Kreis gezeichnet. Da es sich bei den Körpern um Punktmassen handelt, prallen zwei Körper bei einer Kollision erst im Mittelpunkt voneinander ab. Gleiches gilt bei einer Kollision mit der Wand.
+
+Kollisions-Simulator 2000 geht von einem abgeschlossenen System ohne von außen einwirkenden Kräften aus. Reibungskräfte an z.B. Oberfläche oder Luft werden vernachlässigt. Jede Kollision ist ein vollelastischer Stoß.
+
+
+
+
+_Körperverwaltung & Animation
+
+__Hinzufügen von Körpern
+Körper können im oberen Teil von Kollisions-Simulator 2000 unter "Körperdaten" hinzugefügt werden. Dazu müssen zunächst die Masse des Körpers, die Position und die Geschwindigkeit in die dafür vorgesehenen Felder eingetragen werden. Dabei muss die Position größer als 0 sein, da sich bei x=0 die Wand befindet. Ein Körper mit negativer Geschwindigkeit bewegt sich auf die Wand zu, ein Körper mit positiver Geschwindigkeit von ihr weg. Alternativ können auch die Schieberegler unterhalb der Eingabefelder verwendet werden, um die jeweiligen Werte festzulegen. Sollen die Eingabefelder mit zufälligen Werten gefüllt werden, kann die Schaltfläche mit dem runden Pfeil geklickt werden. Wenn alle Felder ausgefüllt sind, wird der Körper mit einem Klick auf "+" hinzugefügt. Er erscheint daraufhin als Listeneintrag auf der rechten Seite des Programms.
+
+__Entfernen von Körpern
+Soll ein Körper entfernt werden, so muss zunächst der Körpereintrag auf der rechten Seite des Programms ausgewählt werden; mit STRG+Linksklick können weitere Körper ausgewählt werden. Anschließend entfernt ein Klick auf "-" in der oberen rechten Ecke die ausgewählten Körper. Wurde kein Körper ausgewählt, löscht Kollisions-Simulator 2000 den zuletzt hinzugefügten Körper.
+
+__Starten der Animation
+Zum Starten der Animation wird die "Start"-Schaltfläche auf der linken Seite gedrückt. Die Animation startet dann in einem eigenen Fenster. Sollen die Daten nur berechnet und nicht animiert werden, so muss der Haken bei "Animation" direkt über der "Start"-Schaltfläche durch einen Klick entfernt werden. Ein erneuter Klick aktiviert die Animation wieder.
+
+HINWEIS: Bei sehr vielen Körpern oder einer sehr hohen Kollisionsfrequenz kann es sein, dass Kollisions-Simulator 2000 eine gewisse Zeit zur Berechnung benötigt. Geduld!
+
+__Beenden der Animation
+Sobald alle Kollisionen passiert sind, schließt sich das Animationsfenster automatisch. Alternativ kann die Animation auch jederzeit über das Kreuz in der oberen rechten Ecke geschlossen werden. Die restlichen Daten werden dann im Hintergrund berechnet.
+
+
+
+_Datenverarbeitung
+
+Bei jeder Kollision zeichnet Kollisions-Simulator 2000 folgende Daten auf:
+
+• Position aller Körper (x)
+• Geschwindigkeit aller Körper (v)
+• Zeit seit Beginn (t)
+• Zeit seit letzter Kollision (delta t)
+• Anzahl an Kollisionen seit Beginn
+• Momentane Kollisionsfrequenz
+
+Daten können nur verarbeitet werden, wenn sie zuvor mit einem Klick auf "Start" berechnet wurden.
+
+__Graphen zeichnen
+Sollen die berechneten Daten übersichtlich als Graph dargestellt werden, müssen zunächst die x- und y-Achse unter "Graphen" festgelegt werden. Mit einem Klick auf das jeweilige Eingabefeld kann aus einer Liste der gewünschte Datentyp ausgewählt werden. Die Schaltfläche "Erstellen" zeigt den Graphen an. Je nach Belieben können Punkte und Linien in der Abbildung ein- bzw. ausgeschaltet werden. Da die Daten immer zum Zeitpunkt einer Kollision aufgezeichnet werden, steht ein Punkt für eine Kollision.
+
+Im Graphenfenster gibt es verschiedene Schaltflächen:
+
+• Haus: Stellt die Originalansicht wieder her
+• Pfeile: Vorherige bzw. nächste Ansicht anzeigen
+• Kreuz: Wählt das Verschieben-Werkzeug aus. Der Graph kann mit gedrückter linker Maustaste verschoben werden. Gedrückte rechte Maustaste mit Bewegung nach links/rechts/oben/unten vergrößert bzw. verkleinert den Graphen. Ein erneuter Klick wählt das Werkzeug wieder ab.
+• Lupe: Wählt das Zoom-Werkzeug aus. Mit gedrückter linker Maustaste kann ein Bereich ausgewählt werden, der vergrößert werden soll. Gedrückte rechte Maustaste verkleinert den Graphen.
+• Schieberegler: Anzeige verändern
+• Speichern-Symbol: Speichert den aktuellen Ausschnitt des Graphen als .png-Bild an einem beliebigen Ort
+
+__Daten exportieren
+Die Schaltfläche "Daten exportieren" speichert alle berechneten Daten in dem Ordner, in dem Kollisions-Simulator 2000 gestartet wurde. Die erste Zeile jeder Textdatei der einzelnen Datenreihen stellt die Ausgangswerte dar. Jede weitere Zeile steht für eine weitere Kollision. Um zusammengehörende Werte verschiedener Datenreihen (z.B. v und x) zu bestimmen, müssen demnach lediglich die Zeilennummern miteinander verglichen werden. Bei den Textdateien für die Geschwindigkeiten und für die Positionen gehört pro Zeile jeweils der erste Wert zu Körper 1, der zweite Wert zu Körper 2 usw.
+
+
+
