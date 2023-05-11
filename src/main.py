@@ -37,7 +37,7 @@ color_list = ["red", "green", "blue", "yellow", "gray", "cyan"]
 root = Tk()
 gr.initgraphics(root)
 
-root.title("Kollisions-Simulator 2000")
+root.title("Kollisionsimulator 2000")
 bg_color = root.cget("bg")
 screen_width = root.winfo_screenwidth()
 screen_height = root.winfo_screenheight()
@@ -152,7 +152,7 @@ def open_help():
         return
     win_help = Toplevel(root)
     win_help.focus_set()
-    win_help.title("Hilfe  -  Kollisions-Simulator 2000")
+    win_help.title("Hilfe  -  Kollisionsimulator 2000")
     win_help.geometry("%sx%s+%s+%s" % (screen_width - 200, screen_height - 200, 50, 50))
     help_text = open(SRC_DIR / "help.txt", "r", encoding='utf-8')
     textbox = Text(win_help, font=font, wrap=WORD)
@@ -239,7 +239,7 @@ def update_scale(x, s):
 
 frame_left = Frame(root, bd=15, bg=bg_color)
 frame_left.place(relx=0, rely=0, relwidth=0.75, relheight=1)
-title = Label(frame_left, text="Kollisions-Simulator 2000", font="TkDefaultFont 25 bold italic", anchor="w")
+title = Label(frame_left, text="Kollisionsimulator 2000", font="TkDefaultFont 25 bold italic", anchor="w")
 title.place(relx=0, rely=0, relwidth=1, relheight=0.1)
 frame_input = LabelFrame(frame_left, bg=bg_color, bd=2, pady=5, padx=20, text="Körperdaten", font=font)
 frame_input.place(relx=0, rely=0.15, relwidth=1, relheight=0.26)
