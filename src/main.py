@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+print("Loading modules")
 try:
     from tkinter import *
     import os
@@ -9,11 +11,23 @@ try:
     from random import *
     from graph import *
     from tkinter import ttk
+    from pathlib import Path
 except ImportError as e:
     print(repr(e))
     print("\nZum Beenden Taste drücken...")
     input()
     exit()
+
+
+# get directory where this script is located
+try:
+    SRC_DIR = Path(__file__).absolute().parent
+except NameError:
+    raise RuntimeError("Program must be run as a file")
+
+
+
+print("Setting up window")
 
 # bg_color = "grey"
 font_size = 9
@@ -140,7 +154,7 @@ def open_help():
     win_help.focus_set()
     win_help.title("Hilfe  -  Kollisions-Simulator 2000")
     win_help.geometry("%sx%s+%s+%s" % (screen_width - 200, screen_height - 200, 50, 50))
-    help_text = open("help.txt", "r", encoding='utf-8')
+    help_text = open(SRC_DIR / "help.txt", "r", encoding='utf-8')
     textbox = Text(win_help, font=font, wrap=WORD)
     n = 0
     indent = 0
@@ -168,6 +182,8 @@ def open_help():
             if indent > 0:
                 textbox.tag_add("%d" % n, "%d.0" % n, "%d.%d" % (n, len(line)))
                 textbox.tag_config("%d" % n, lmargin1=indent, lmargin2=indent)
+    
+    help_text.close()
 
     # textbox.place(relx=0, rely=0, width=1, height=1)
     textbox.pack(fill=BOTH, expand=1, side=LEFT)
