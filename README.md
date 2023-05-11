@@ -1,4 +1,4 @@
-# Kollisions-Simulator 2000
+# Kollisionsimulator 2000
 
 ### Builden
 
