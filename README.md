@@ -1,8 +1,8 @@
-# collision-simulator
+# Kollisions-Simulator 2000
 
-### Building
+### Builden
 
-The app is bundled to a single `.exe` file by using [pyinstaller](https://pyinstaller.org/en/stable/index.html):
+Das Programm wird mit [pyinstaller](https://pyinstaller.org/en/stable/index.html) als `.exe`-Datei verpackt:
 
 ```
 pyinstaller pyinstaller.spec
