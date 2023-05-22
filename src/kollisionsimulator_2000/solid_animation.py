@@ -1,6 +1,7 @@
 try:
-    from graphics import *
+    from .graphics import Circle, Point
     from random import *
+    import time
 except ImportError as e:
     print(repr(e))
     print("\nZum Beenden Taste drücken...")

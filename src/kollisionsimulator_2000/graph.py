@@ -17,7 +17,6 @@ names = {
 
 
 def open_graph(data, kugeln, label_x, label_y, cb_1, cb_2):
-
     x = data.get(names.get(label_x))
     y = data.get(names.get(label_y))
     if x is None or y is None:

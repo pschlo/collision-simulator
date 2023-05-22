@@ -1,5 +1,5 @@
 try:
-    from graphics import *
+    from .graphics import GraphWin, Line, Point
 except ImportError as e:
     print(repr(e))
     print("\nZum Beenden Taste drücken...")
