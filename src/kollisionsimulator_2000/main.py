@@ -12,6 +12,8 @@ try:
     from .graph import *
     from tkinter import ttk
     from pathlib import Path
+    from importlib import resources as importlib_resources
+    from . import resources
 except ImportError as e:
     print(repr(e))
     print("\nZum Beenden Taste drücken...")
@@ -19,11 +21,17 @@ except ImportError as e:
     exit()
 
 
-# get directory where this script is located
-try:
-    SRC_DIR = Path(__file__).absolute().parent
-except NameError:
-    raise RuntimeError("Program must be run as a file")
+
+# helper functions for loading resource data
+# designed specifically to avoid __file__
+# see https://importlib-resources.readthedocs.io/en/latest/using.html
+
+def get_byte_resource(name):
+    return importlib_resources.files(resources).joinpath(name).read_bytes()
+
+def get_text_resource(name):
+    return importlib_resources.files(resources).joinpath(name).read_text(encoding='UTF-8')
+
 
 
 # bg_color = "grey"
@@ -157,12 +165,16 @@ def main():
         win_help.focus_set()
         win_help.title("Hilfe  -  Kollisionsimulator 2000")
         win_help.geometry("%sx%s+%s+%s" % (screen_width - 200, screen_height - 200, 50, 50))
-        help_text = open(SRC_DIR / "help.txt", "r", encoding='utf-8')
+        help_text = get_text_resource('help.txt')
         textbox = Text(win_help, font=font, wrap=WORD)
         n = 0
         indent = 0
-        for line in help_text.readlines():
+
+        for line in help_text.splitlines():
             n += 1
+            line += "\n"
+
+            # small heading
             if line[:2] == "__":
                 line = line[2:]
                 textbox.insert(END, line)
@@ -170,23 +182,28 @@ def main():
                 textbox.tag_config("%d" % n, font="TkDefaultFont 12 italic", spacing1=5, spacing3=5, lmargin1=20,
                                 lmargin2=20)
                 indent = 40
+
+            # large heading
             elif line[0] == "_":
                 line = line[1:]
                 textbox.insert(END, line)
                 textbox.tag_add("%d" % n, "%d.0" % n, "%d.%d" % (n, len(line)))
                 textbox.tag_config("%d" % n, underline=False, font="TkDefaultFont 18 bold", spacing3=0)
                 indent = 20
+
+            # bullet point
             elif line[0] == "-" or line[0] == "•":
                 textbox.insert(END, line)
                 textbox.tag_add("%d" % n, "%d.0" % n, "%d.%d" % (n, len(line)))
                 textbox.tag_config("%d" % n, lmargin1=indent + 20, lmargin2=indent + 27)
+
+            # simple text
             else:
                 textbox.insert(END, line)
                 if indent > 0:
                     textbox.tag_add("%d" % n, "%d.0" % n, "%d.%d" % (n, len(line)))
                     textbox.tag_config("%d" % n, lmargin1=indent, lmargin2=indent)
         
-        help_text.close()
 
         # textbox.place(relx=0, rely=0, width=1, height=1)
         textbox.pack(fill=BOTH, expand=1, side=LEFT)
